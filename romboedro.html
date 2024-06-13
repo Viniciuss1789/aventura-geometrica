@@ -1,59 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<ht, ml lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="circulo.css">
     <title>Romboedro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
+    <header>
+       <a href="index.html"> <h1>Romboedro</h1></a>
+</header>
 
-    <div class="container">
-
-        <div class="py-5 text-center">
-            <h2>Calculadora de área de Romboedro</h2>
-        </div>
-
-        <hr class="my-4">
-
-        <p class="lead">Abaixo vamos calcular a área do triângulo utilizando a fórmula: <code>(base * altura) / 2</code></p>
-
-        <form method="post" class="row g-3">
-            <div class="col-sm-6">
-                <label for="base" class="form-label">Base:</label>
-                <input type="number" class="form-control" id="base" name="base" placeholder="" value="" required>
-              </div>
-           
-            <div class="col-sm-6">
-                <label for="base" class="form-label">Altura:</label>
-                <input type="number" name="altura" id="altura" class="form-control" id="base" name="base" placeholder="" value="" required />
-            </div>
-
-            <div>
-                <input type="submit" class="w-100 btn btn-primary btn-lg" id="btnCalc" value="Calcular" />
-            </div>
-
-        </form>
-
-        <div class="py-5 text-center">
-            <h3 id="resultado"></h3>
-        </div>
-    </div>
-
-    <script>
-
-        document.getElementById("btnCalc").addEventListener("click", function (event) {
-
-            event.preventDefault();
-            var base = document.getElementById("base").value;
-            var altura = document.getElementById("altura").value;
-            var area = (base * altura) / 2;
-            document.getElementById("resultado").innerHTML = "Resultado: " + area;
-        });
-
-
+    
+        
+        <label for="comprimentoLado">Comprimento do Lado (a):</label>
+        <input type="number" id="comprimentoLado" step="any">
+    
+        <label for="anguloTheta">Ângulo (θ) em graus:</label>
+        <input type="number" id="anguloTheta" step="any">
+    
+        <button onclick="calcularVolume()">Calcular Volume</button>
+    
+        <h2 id="resultado"></h2>
+        
+    
+        <script>
+            // Função para calcular o volume de um romboedro
+            function volumeRomboedro(a, theta) {
+                let thetaRad = theta * (Math.PI / 180); // Converte graus para radianos
+                let cosTheta = Math.cos(thetaRad);
+                let fator = 1 - 3 * Math.pow(cosTheta, 2) + 2 * Math.pow(cosTheta, 3);
+                return Math.pow(a, 3) * Math.sqrt(fator);
+            }
+    
+            // Função para obter os valores dos inputs e calcular o volume
+            function calcularVolume() {
+                let comprimentoLado = parseFloat(document.getElementById('comprimentoLado').value);
+                let anguloTheta = parseFloat(document.getElementById('anguloTheta').value);
+    
+                if (isNaN(comprimentoLado) || isNaN(anguloTheta)) {
+                    document.getElementById('resultado').innerText = "Por favor, insira valores válidos.";
+                    return;
+                }
+    
+                let volume = volumeRomboedro(comprimentoLado, anguloTheta);
+                document.getElementById('resultado').innerText = `O volume do romboedro é: ${volume.toFixed(2)}`;
+            }
+        
     </script>
-
 </body>
 </html>

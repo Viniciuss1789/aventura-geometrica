@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="circulo.css">
-    <title>Retangulo</title>
+    <title>Quadrado</title>
 </head>
 <body>
     <header>
-       <a href="index.html"> <h1>Retangulo</h1></a>
+       <a href="index.html"> <h1>Quadrado</h1></a>
 </header>
 
     <main>
         <form>
             
-            <label for="altura">                
-                <input type="number" id="altura" name="altura" placeholder="Digite a Altura ">
+            <label for="lado">                
+                <input type="number" id="lado" name="lado" placeholder="Digite do lado ">
             </label>
-            
-            <label for="base">                
-                <input type="number" id="base" name="base" placeholder="Digite a Base ">
-            </label>
+
             
             <input type="submit" value="Calcular" id="btn">
         </form>
@@ -36,16 +33,13 @@
           function calculo(event){
             event.preventDefault()
             
-              var altura = document.querySelector("#altura").value 
-              var base = document.querySelector("#base").value 
-
-              var area = altura*base
-            
+              var lado = document.querySelector("#lado").value 
+              var area =  lado*2
 
               console.log(typeof(comprimento));
              
            
-              resposta.innerHTML = `resultado  ${area}`
+              resposta.innerHTML = `Resultado ${area}`
         }
 
         botao.addEventListener("click", calculo)
@@ -54,7 +48,7 @@
         
 
 
-       /*  alert("O valor da área do circulo é" + pi*(r*r)) */
+      
 
 
     </script>
